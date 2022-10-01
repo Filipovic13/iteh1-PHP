@@ -25,14 +25,17 @@
                <div class="container">
                     <div class="collapse navbar-collapse" >
                          <ul class="navbar-nav ms-auto">
-                              <li class="nav-item">
-                                   <a class="nav-link" href="./login.php">LogOut</a>
-                              </li>
+               
                               <li class="nav-item">
                                    <a class="nav-link" href="./clanovi.php">Clanovi</a>
                               </li>
+
                               <li class="nav-item">
                                    <a class="nav-link" href="./polaganja.php">Polaganja</a>
+                              </li>
+
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./login.php">Logout</a>
                               </li>
                          </ul>
                     </div>

@@ -1,3 +1,29 @@
+<?php 
+     require "dbBroker.php";
+     require "model/clan.php";
+
+     $response= Clan::getAll($conn);
+
+     if(!$response){
+          echo "Greska prilikom dovlacenja calnova iz tabele";
+          die();
+     }
+
+
+     if($response->num_rows==0){
+          echo "Nema clanova u tabeli";
+          die();
+     }
+     else{
+
+     
+     
+?>
+
+
+
+
+
 <?php include 'inc/header.php'; ?>
 
 
@@ -16,14 +42,17 @@
                </tr>
           </thead>
           <tbody>
+          <?php 
+               while($red_clan=$response->fetch_array()):
+          ?>
                <tr>
-                    <td>1</td>
-                    <td>Neko Ime</td>
-                    <td>Neko Prezime</td>
-                    <td>111111</td>
-                    <td>nesto@email.com</td>
-                    <td>adresa</td>
-                    <td>P5</td>
+               
+                    <td> <?php echo $red_clan["id"] ?> </td>
+                    <td> <?php echo $red_clan["ime"] ?> </td>
+                    <td> <?php echo $red_clan["prezime"] ?> </td>
+                    <td> <?php echo $red_clan["telefon"] ?> </td>
+                    <td> <?php echo $red_clan["email"] ?> </td>
+                    <td> <?php echo $red_clan["adresa"] ?> </td>
                     <td>
                          <button class="btn btn-primary">
                               <a href="" class="text-light">Update</a>
@@ -35,6 +64,10 @@
                          </button>
                     </td>
                </tr>
+          <?php 
+               endwhile;
+               }
+          ?>     
           </tbody>
      </table>
 </div>

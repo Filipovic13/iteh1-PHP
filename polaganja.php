@@ -5,6 +5,13 @@
      require 'dbBroker.php';
      require 'model/polaganje.php';
 
+     session_start();
+     if(!isset($_SESSION["user_id"])){
+          header('Location:login.php');
+          exit();
+     }
+
+
      $response = Polaganje::getAll($conn);
 
      if(!$response){
@@ -13,7 +20,7 @@
      }
 
      if($response->num_rows==0){
-          echo "Nema podataka u tabli polaganja";
+          echo "Nema podataka u tabeli polaganja";
           die();
      }else{
 

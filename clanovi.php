@@ -2,6 +2,14 @@
      require "dbBroker.php";
      require "model/clan.php";
 
+
+     session_start();
+     if(!isset($_SESSION["user_id"])){
+          header('Location:login.php');
+          exit();
+     }
+
+
      $response= Clan::getAll($conn);
 
      if(!$response){
@@ -53,14 +61,13 @@
                     <td> <?php echo $red_clan["telefon"] ?> </td>
                     <td> <?php echo $red_clan["email"] ?> </td>
                     <td> <?php echo $red_clan["adresa"] ?> </td>
+                    <td> <?php echo $red_clan["nivo"] ?> </td>
                     <td>
                          <button class="btn btn-primary">
                               <a href="" class="text-light">Update</a>
                          </button>
                          <button class="btn btn-danger">
-                              <a href="" class="text-light"
-                                   >Delete
-                              </a>
+                              <a href="" class="text-light">Delete</a>
                          </button>
                     </td>
                </tr>

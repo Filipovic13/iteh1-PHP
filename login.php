@@ -1,3 +1,34 @@
+<?php 
+     require 'dbBroker.php';
+     require 'model/user.php';
+
+     session_start();
+     if(isset($_POST["username"]) && isset($_POST["password"])){
+
+          $uname = $_POST["username"];
+          $upass = $_POST["password"];
+
+          $korisnik = new User(1, $uname, $upass);
+
+          $response = $korisnik->logInUser($uname, $upass, $conn);
+          
+
+          if($response->num_rows==1){
+          
+               $_SESSION["user_id"] = $korisnik->id;
+               header('Location: clanovi.php');
+               exit();
+          }else{
+               echo "<script>console.log('ne moze');</script>";
+          }
+     }
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
      <head>
@@ -23,15 +54,23 @@
                <img src="/iteh/domaci1/img/KMG.png"  width="200" class="mt-4  mb-3 ">
                <h2>Welcome</h2>
 
-               <form method="POST" class="mt-4 w-50   border rounded p-5"  action="./clanovi.php">
+               <form method="POST" class="mt-4 w-50   border rounded p-5"  >
+                     <div class="mb-3">
+                         <label for="name" class="form-label">Name</label>
+                         <input type="text" name="name" class="form-control">
+                        
+                    </div>
+
                     <div class="mb-3">
                          <label for="username" class="form-label">Username</label>
-                         <input type="text" class="form-control">
+                         <input type="text" name="username" class="form-control" required>
+               
                     </div>
 
                     <div class="mb-3">
                          <label for="password" class="form-label">Password</label>
-                         <input type="password" class="form-control">
+                         <input type="password" name="password" class="form-control">
+                    
                     </div>
 
                     <div class="text-center  mb-3" >

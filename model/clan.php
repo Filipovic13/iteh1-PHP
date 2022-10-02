@@ -22,13 +22,15 @@ class Clan {
 
     public static function getAll(mysqli $conn){
 
-        $query = "SELECT * 
-                  FROM clanovi";
+        $query = "SELECT id, ime, prezime, telefon, email, adresa, nivo
+                  FROM (
+                        SELECT c.id, c.ime, c.prezime, c.telefon, c.email, c.adresa, p.nivo,
+                        rank() OVER (PARTITION BY c.id ORDER BY p.datum DESC) as rn
+                         FROM clanovi c JOIN polaganja p ON c.id = p.id_clana
+                         ) t
+                     WHERE rn = 1;
+                  ";
         return $conn->query($query);
-
-        
-        
-
     }
 }
 

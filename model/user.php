@@ -13,9 +13,11 @@ class User{
 
     }
 
-    public function logInUser($username,$password, mysqli $conn){
+    public function logInUser($uname,$upass, mysqli $conn){
 
-        $query="SELECT * FROM users WHERE username='$username' and password='$password'";
+        $query="SELECT * 
+                FROM users 
+                WHERE username='$uname' AND password='$upass'";
         return $conn->query($query);
         
     }

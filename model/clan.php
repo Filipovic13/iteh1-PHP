@@ -1,5 +1,6 @@
 <?php 
 
+
 class Clan {
 
     public $id;
@@ -30,8 +31,26 @@ class Clan {
                          ) t
                      WHERE rn = 1;
                   ";
+        // $query = "SELECT * FROM clanovi";
         return $conn->query($query);
     }
+
+
+    public static function dodajClana(Clan $novi_clan, mysqli $conn){
+
+        $query1 = "INSERT INTO clanovi (ime, prezime, telefon, email, adresa) VALUES ('$novi_clan->ime', '$novi_clan->prezime', '$novi_clan->telefon', '$novi_clan->email','$novi_clan->adresa')";
+       
+        $query2=null;
+        if($conn->query($query1)){
+            $query2="INSERT INTO polaganja (nivo, id_clana) VALUES ('P0', LAST_INSERT_ID() )";
+        }
+
+        return $conn->multi_query($query2);
+
+    }
+
+
+
 }
 
 

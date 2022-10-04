@@ -13,6 +13,7 @@
                integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
                crossorigin="anonymous"
           />
+          <link rel="stylesheet" href="./css/style.css">
           <title>Home page</title>
      </head>
 
@@ -43,6 +44,6 @@
           </nav>
 
           <main>
-            <div class="container d-flex flex-column align-items-center">
+            <div class="container d-flex flex-column">
    
           

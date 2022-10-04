@@ -34,8 +34,15 @@
 
 <?php include 'inc/header.php'; ?>
 
+<!--dugme za otvaranje modala -->
+<div>
+     <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#dodaj-modal">
+          Dodaj novog clana
+     </button>
+</div>
 
-<div class="container" style="margin-top: 7%">
+
+<div class="container" style="margin-top: 7%  align-items-center">
      <table class="table table-hover table-striped">
           <thead class="thead">
                <tr>
@@ -61,10 +68,10 @@
                     <td> <?php echo $red_clan["telefon"] ?> </td>
                     <td> <?php echo $red_clan["email"] ?> </td>
                     <td> <?php echo $red_clan["adresa"] ?> </td>
-                    <td> <?php echo $red_clan["nivo"] ?> </td>
+                    <td> <?php echo $red_clan["nivo"] ?> </td> 
                     <td>
                          <button class="btn btn-primary">
-                              <a href="" class="text-light">Update</a>
+                              <a href="" class="text-light" >Update</a>
                          </button>
                          <button class="btn btn-danger">
                               <a href="" class="text-light">Delete</a>
@@ -77,6 +84,54 @@
           ?>     
           </tbody>
      </table>
+
+      <!-- modal -->
+     <div class="modal fade" id="dodaj-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+
+          <!-- dialog - white bubble that pops out -->
+          <div class="modal-dialog">
+
+               <!-- content inside bubble -->
+               <div class="modal-content">
+                         
+                    <div class="modal-header">
+                         <h5 class="modal-title" id="modal-title">Dodavanje novog clana u bazu</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                         <form action="#" method="post" id="formaDodajClana">
+                              <div class="form-group">
+                                   <label for="modal-name" class="col-form-label">Ime:</label>
+                                   <input type="text" class="form-control" name="modal-name">
+                              </div>
+                              <div class="form-group">
+                                   <label for="modal-surname" class="col-form-label">Prezime:</label>
+                                   <input type="text" class="form-control" name="modal-surname"></input>
+                              </div>
+                              <div class="form-group">
+                                   <label for="modal-phone" class="col-form-label">Telefon:</label>
+                                   <input type="text" class="form-control" name="modal-phone"></input>
+                              </div>
+                              <div class="form-group">
+                                   <label for="modal-email" class="col-form-label">E-mail:</label>
+                                   <input type="text" class="form-control" name="modal-email"></input>
+                              </div>
+                              <div class="form-group">
+                                   <label for="modal-adress" class="col-form-label">Adresa:</label>
+                                   <input type="text" class="form-control" name="modal-adress"></input>
+                              </div>
+                              <div class="form-group">
+                                   <button type="submit" class="btn btn-secondary mt-3" id="btnNoviClan">Dodaj</button>
+                              </div>
+                              
+                         </form>
+                    </div>
+
+               </div>
+          </div>
+     </div>
+
 </div>
 
 

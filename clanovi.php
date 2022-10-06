@@ -36,7 +36,7 @@
 
 <!--dugme za otvaranje modala -->
 <div>
-     <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#dodaj-modal">
+     <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#dodaj-clana-modal">
           Dodaj novog clana
      </button>
 </div>
@@ -70,11 +70,13 @@
                     <td> <?php echo $red_clan["adresa"] ?> </td>
                     <td> <?php echo $red_clan["nivo"] ?> </td> 
                     <td>
-                         <button class="btn btn-primary">
-                              <a href="" class="text-light" >Update</a>
+                         <button type="button" class="btn btn-primary edit_data" data-bs-toggle="modal" data-bs-target="#izmeni-clana-modal">
+                              Izmeni
                          </button>
-                         <button class="btn btn-danger">
-                              <a href="" class="text-light">Delete</a>
+                    </td>
+                    <td>
+                         <button type="button" class="btn btn-danger delete_data"  data-bs-toggle="modal" data-bs-target="#brisanje-clana-modal">
+                              Obrisi
                          </button>
                     </td>
                </tr>
@@ -85,8 +87,11 @@
           </tbody>
      </table>
 
-      <!-- modal -->
-     <div class="modal fade" id="dodaj-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+
+<!-- ####################################################################################################################### -->
+
+      <!-- modal za unos novog clana -->
+     <div class="modal fade" id="dodaj-clana-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
 
           <!-- dialog - white bubble that pops out -->
           <div class="modal-dialog">
@@ -128,6 +133,92 @@
                          </form>
                     </div>
 
+               </div>
+          </div>
+     </div>
+
+ <!-- ####################################################################################################################### -->
+
+     <!-- modal za izmenu  clana -->
+     <div class="modal fade" id="izmeni-clana-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+
+          <!-- dialog - white bubble that pops out -->
+          <div class="modal-dialog">
+
+               <!-- content inside bubble -->
+               <div class="modal-content">
+                         
+                    <div class="modal-header">
+                         <h5 class="modal-title" id="modal-title">Izmena postojeceg clana </h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                         <form action="handler/updateClan.php" method="POST" id="formaIzmeniClana">
+
+                              <input type="hidden" name="edit_id" id="edit_id">
+
+                              <div class="form-group">
+                                   <label for="update-name" class="col-form-label">Ime:</label>
+                                   <input type="text" class="form-control" name="update-name" id="update-name">
+                              </div>
+                              <div class="form-group">
+                                   <label for="update-surname" class="col-form-label">Prezime:</label>
+                                   <input type="text" class="form-control" name="update-surname" id="update-surname"></input>
+                              </div>
+                              <div class="form-group">
+                                   <label for="update-phone" class="col-form-label">Telefon:</label>
+                                   <input type="text" class="form-control" name="update-phone" id="update-phone"></input>
+                              </div>
+                              <div class="form-group">
+                                   <label for="update-email" class="col-form-label">E-mail:</label>
+                                   <input type="text" class="form-control" name="update-email" id="update-email"></input>
+                              </div>
+                              <div class="form-group">
+                                   <label for="update-adress" class="col-form-label">Adresa:</label>
+                                   <input type="text" class="form-control" name="update-adress" id="update-adress"></input>
+                              </div>
+                              <div class="form-group">
+                                   <button type="submit" class="btn btn-secondary mt-3" name="btnIzmeniClana" id="btnIzmeniClana">Update</button>
+                              </div>
+                              
+                         </form>
+                    </div>
+
+               </div>
+          </div>
+     </div>
+
+     
+ <!-- ####################################################################################################################### -->
+
+     <!-- modal za brisanje  clana -->
+     <div class="modal fade" id="brisanje-clana-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+
+          <!-- dialog - white bubble that pops out -->
+          <div class="modal-dialog">
+
+               <!-- content inside bubble -->
+               <div class="modal-content">
+                         
+                    <div class="modal-header">
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form action="handler/deleteClan.php" method="POST">
+                         <div class="modal-body">
+                              <input type="hidden" name="delete_id" id="delete_id">
+                              <h5>Da li ste sigunrni da obriste ovog clana? </h5>
+                              
+                         </div>
+
+                         <div class="modal-footer">
+                              <button type="submit" class="btn btn-secondary" name="btnObrisiClana">Da, obrisi</button>
+                         </div>
+
+                    </form>
+
+            
                </div>
           </div>
      </div>

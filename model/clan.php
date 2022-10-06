@@ -49,7 +49,22 @@ class Clan {
 
     }
 
+   
 
+    public static function izmeniClana($ime, $prezime, $telefon, $email, $adresa, $edit_id, mysqli $conn){
+
+        $query = "UPDATE clanovi 
+                  SET ime ='$ime', prezime='$prezime', telefon='$telefon', email='$email', adresa='$adresa' 
+                  WHERE id = '$edit_id' ";
+        return $conn->query($query);
+    }
+
+    public static function obrisiClana($delete_id, mysqli $conn)
+    {
+        $query = "DELETE FROM clanovi 
+                  WHERE id='$delete_id' ";
+        return $conn->query($query);
+    }
 
 }
 

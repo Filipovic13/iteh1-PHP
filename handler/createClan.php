@@ -10,10 +10,10 @@ if(isset($_POST['modal-name']) && isset($_POST['modal-surname']) && isset($_POST
         
 
         if ($status){
-            echo "uspelo";
+            echo "kreiran";
         }else{
             echo $status;
-            echo 'neuspelo';
+            echo 'nije kreiran';
         }
     }
 

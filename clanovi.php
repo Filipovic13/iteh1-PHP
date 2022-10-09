@@ -35,15 +35,20 @@
 <?php include 'inc/header.php'; ?>
 
 <!--dugme za otvaranje modala -->
-<div>
-     <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#dodaj-clana-modal">
-          Dodaj novog clana
-     </button>
-</div>
+
 
 
 <div class="container" style="margin-top: 7%  align-items-center">
-     <table class="table table-hover table-striped">
+
+     <div class="mb-3">
+          <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#dodaj-clana-modal">
+               Dodaj novog clana
+          </button>
+     </div>
+
+     <input class="mb-4"  type="text" name="search" id="search_text" placeholder="Pretrazi clana...">
+
+     <table class="table table-hover " id="table_id">
           <thead class="thead">
                <tr>
                     <th scope="col">ID</th>
@@ -53,6 +58,7 @@
                     <th scope="col">E-mail</th>
                     <th scope="col">Adresa</th>
                     <th scope="col">Nivo</th>
+                    <th></th>
                     <th></th>
                </tr>
           </thead>
@@ -70,12 +76,12 @@
                     <td> <?php echo $red_clan["adresa"] ?> </td>
                     <td> <?php echo $red_clan["nivo"] ?> </td> 
                     <td>
-                         <button type="button" class="btn btn-primary edit_data" data-bs-toggle="modal" data-bs-target="#izmeni-clana-modal">
+                         <button type="button" class="btn btn-outline-primary edit_data" data-bs-toggle="modal" data-bs-target="#izmeni-clana-modal">
                               Izmeni
                          </button>
                     </td>
                     <td>
-                         <button type="button" class="btn btn-danger delete_data"  data-bs-toggle="modal" data-bs-target="#brisanje-clana-modal">
+                         <button type="button" class="btn btn-outline-danger delete_data"  data-bs-toggle="modal" data-bs-target="#brisanje-clana-modal">
                               Obrisi
                          </button>
                     </td>

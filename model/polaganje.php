@@ -19,7 +19,9 @@ class Polaganje{
 
     public static function getAll(mysqli $conn){
 
-        $query="SELECT * FROM polaganja";
+        $query="SELECT nivo, datum, za_nivo, polozio, id_clana, ime, prezime 
+                FROM polaganja p JOIN clanovi c ON p.id_clana=c.id
+                ";
         return $conn->query($query);
     }
 

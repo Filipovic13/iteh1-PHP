@@ -1,3 +1,24 @@
-.btn-backgr {
+/* .btn-backgr {
      background-color: #e17f26 !important;
+} */
+
+/* body {
+     background-color: #e17f26;
+} */
+
+table {
+     background-color: #e17f26;
+}
+
+.table.table-hover {
+     color: white;
+}
+
+.navbar-nav li a {
+     color: white !important;
+     font-size: 1.5em;
+}
+
+.navbar-dark .navbar-nav > li > a:hover {
+     color: #e17f26 !important;
 }

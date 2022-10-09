@@ -28,8 +28,8 @@
 
  ?>
 
-<div class="container" style="margin-top: 7%">
-     <table class="table table-hover table-striped">
+<div class="container" style="margin-top: 9.5%">
+     <table class="table table-hover">
           <thead class="thead">
                <tr>
                     <th scope="col">Nivo</th>
@@ -37,6 +37,8 @@
                     <th scope="col">Polaganje za nivo</th>
                     <th scope="col">Polozeno</th>
                     <th scope="col">ID Clana</th>
+                    <th scope="col">Ime</th>
+                    <th scope="col">Prezime</th>
                     <th></th>
                </tr>
           </thead>
@@ -51,9 +53,11 @@
                     <td> <?php echo $red_polaganja["za_nivo"] ?> </td>
                     <td> <?php echo $red_polaganja["polozio"] ?> </td>
                     <td> <?php echo $red_polaganja["id_clana"] ?> </td>
+                    <td> <?php echo $red_polaganja["ime"] ?> </td>
+                    <td> <?php echo $red_polaganja["prezime"] ?> </td>
                     <td>
-                         <button class="btn btn-info">
-                              <a href="" class="text-light">Update</a>
+                         <button class="btn btn-outline-secondary">
+                             Azuriraj
                          </button>
                     </td>
                </tr>
@@ -67,8 +71,8 @@
 
 
      <div class="text-center">
-        <button class="btn btn-info ">
-            <a href="" class="text-light">Dodaj novo polaganje</a>
+        <button class="btn btn-secondary ">
+            Dodaj novo polaganje
         </button>
      </div>
     

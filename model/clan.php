@@ -66,6 +66,21 @@ class Clan {
         return $conn->query($query);
     }
 
+    public static function search($string, mysqli $conn){
+
+        $query = "SELECT id, ime, prezime, telefon, email, adresa, nivo
+        FROM (
+              SELECT c.id, c.ime, c.prezime, c.telefon, c.email, c.adresa, p.nivo,
+              rank() OVER (PARTITION BY c.id ORDER BY p.datum DESC) as rn
+               FROM clanovi c JOIN polaganja p ON c.id = p.id_clana
+               ) t
+           WHERE rn = 1 AND ime LIKE '%$string%' OR prezime LIKE '%$string%'";
+        
+
+        return $conn->query($query);
+
+    }
+
 }
 
 

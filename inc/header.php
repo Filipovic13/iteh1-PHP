@@ -22,8 +22,9 @@
 
      
      <div>
-          <nav class="navbar navbar-expand-sm navbar-light bg-light mb-4">
+          <nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-4">
                <div class="container">
+                    <img src="img/logoBelaSlova.png" alt="" width="200px">
                     <div class="collapse navbar-collapse" >
                          <ul class="navbar-nav ms-auto">
                

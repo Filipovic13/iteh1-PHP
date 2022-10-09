@@ -68,4 +68,24 @@ $(document).ready(function () {
 
           $("#delete_id").val(data[0].trim());
      });
+
+     $("#search_text").keyup(function () {
+          var input = $(this).val();
+          $.ajax({
+               url: "handler/search.php",
+               method: "POST",
+               data: { query: input },
+               success: function (response) {
+                    $("#table_id").html(response);
+               },
+          });
+
+          if (input == "") {
+               location.reload(true);
+          }
+     });
+
+     $("#ime-input").on("keyup", function () {
+          $("#paragraf-ime").text($("#ime-input").val());
+     });
 });

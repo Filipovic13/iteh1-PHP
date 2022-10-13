@@ -72,7 +72,7 @@
      </table>
 
 
-     <div class="text-center">
+     <div class="text-center mb-3">
         <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#dodaj-polaganje-modal">
             Dodaj novo polaganje
         </button>
@@ -120,7 +120,7 @@
                                    <label for="modal-id-clana" class="col-form-label">Id clana: </label>
                                    <input type="text" class="form-control" name="modal-id-clana"></input>
                               </div>
-                              <div class="form-group">
+                              <div class="form-group mb-3">
                                    <button type="submit" class="btn btn-secondary mt-3" id="btnNovoPolaganje">Dodaj</button>
                               </div>
                               

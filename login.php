@@ -48,7 +48,7 @@
           <title>Home page</title>
      </head>
 
-<body class="container" style="background-color:white ;">
+<body class="container mb-5" style="background-color:white ;">
      <main>
           <div class="container d-flex flex-column align-items-center">
                <img src="/iteh/domaci1/img/logoCrnaSLova.png"  width="200" class="mt-4  mb-3 ">

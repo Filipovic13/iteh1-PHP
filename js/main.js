@@ -27,6 +27,35 @@ $("#formaDodajClana").submit(function () {
      });
 });
 
+$("#formaDodajPolaganje").submit(function () {
+     event.preventDefault();
+     const $form = $(this);
+     const $inputs = $form.find("input, select, button, textarea");
+     const serijalizacija = $form.serialize();
+     console.log(serijalizacija);
+
+     request = $.ajax({
+          url: "handler/createPolaganje.php",
+          type: "post",
+          data: serijalizacija,
+     });
+
+     request.done(function (response, textStatus, jqXHR) {
+          if (response.trim() == "uspeno") {
+               alert("Polaganje je uspesno dodato");
+               console.log("Uspesno dodato polaganje");
+               location.reload(true);
+          } else {
+               console.log("Polaganje nije dodato");
+          }
+          console.log(response);
+     });
+
+     request.fail(function (jqXHR, textStatus, errorThrown) {
+          console.error("Sledeca greska se desila: " + textStatus, errorThrown);
+     });
+});
+
 $(document).ready(function () {
      //modal za izmenu clana.... prikazivanje trenutnih vrednsoti
      $(".edit_data").on("click", function () {
@@ -117,34 +146,5 @@ $(document).ready(function () {
           $("#update-za-nivo").val(data[3].trim());
           $("#update-polozio").val(data[4].trim());
           $("#update-id-clana").val(data[5].trim());
-     });
-});
-
-$("#formaDodajPolaganje").submit(function () {
-     event.preventDefault();
-     const $form = $(this);
-     const $inputs = $form.find("input, select, button, textarea");
-     const serijalizacija = $form.serialize();
-     console.log(serijalizacija);
-
-     request = $.ajax({
-          url: "handler/createPolaganje.php",
-          type: "post",
-          data: serijalizacija,
-     });
-
-     request.done(function (response, textStatus, jqXHR) {
-          if (response == "dodato") {
-               alert("Polaganje je uspesno dodato");
-               console.log("Uspesno dodato polaganje");
-               location.reload(true);
-          } else {
-               console.log("Polaganje nije dodato " + response);
-          }
-          console.log(response);
-     });
-
-     request.fail(function (jqXHR, textStatus, errorThrown) {
-          console.error("Sledeca greska se desila: " + textStatus, errorThrown);
      });
 });

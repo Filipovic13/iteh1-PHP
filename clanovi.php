@@ -35,9 +35,6 @@
 <?php include 'inc/header.php'; ?>
 
 <!--dugme za otvaranje modala -->
-
-
-
 <div class="container" style="margin-top: 7%  align-items-center">
 
      <div class="mb-3">

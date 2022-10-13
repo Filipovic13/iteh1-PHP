@@ -1,6 +1,5 @@
 $("#formaDodajClana").submit(function () {
      event.preventDefault();
-     console.log("Dodaj je pokrenuto");
      const $form = $(this);
      const $inputs = $form.find("input, select, button, textarea");
      const serijalizacija = $form.serialize();
@@ -29,6 +28,7 @@ $("#formaDodajClana").submit(function () {
 });
 
 $(document).ready(function () {
+     //modal za izmenu clana.... prikazivanje trenutnih vrednsoti
      $(".edit_data").on("click", function () {
           $("#izmeni-clana-modal").modal("show");
           var edit_id = $(this).attr("id");
@@ -52,6 +52,7 @@ $(document).ready(function () {
           $("#update-adress").val(data[5].trim());
      });
 
+     //izbacivanje modala za potvrdu o brisanju clana
      $(".delete_data").on("click", function () {
           $("#brisanje-modal").modal("show");
 
@@ -69,6 +70,7 @@ $(document).ready(function () {
           $("#delete_id").val(data[0].trim());
      });
 
+     // search opcija za pretrazivnaje clanova po imenu i prezimenu
      $("#search_text").keyup(function () {
           var input = $(this).val();
           $.ajax({
@@ -85,7 +87,64 @@ $(document).ready(function () {
           }
      });
 
+     ///////////////////////////////////////////////////////////////////
+     //za ukucano ime se izabcuje isto ime ipod Welcome na pocetnoj strani
      $("#ime-input").on("keyup", function () {
           $("#paragraf-ime").text($("#ime-input").val());
+     });
+
+     ////////////////////////////////////////////////////////////////////
+
+     //modal za izmenu polaganja.... prikazivanje trenutnih vrednsoti
+     $(".edit_polaganje").on("click", function () {
+          $("#izmeni-polaganje-modal").modal("show");
+          var edit_id_p = $(this).attr("id");
+
+          $tr = $(this).closest("tr");
+
+          var data = $tr
+               .children("td")
+               .map(function () {
+                    return $(this).text();
+               })
+               .get();
+
+          console.log(data);
+
+          $("#edit_id_p").val(data[0].trim());
+          $("#update-nivo").val(data[1].trim());
+          $("#update-datum").val(data[2].trim());
+          $("#update-za-nivo").val(data[3].trim());
+          $("#update-polozio").val(data[4].trim());
+          $("#update-id-clana").val(data[5].trim());
+     });
+});
+
+$("#formaDodajPolaganje").submit(function () {
+     event.preventDefault();
+     const $form = $(this);
+     const $inputs = $form.find("input, select, button, textarea");
+     const serijalizacija = $form.serialize();
+     console.log(serijalizacija);
+
+     request = $.ajax({
+          url: "handler/createPolaganje.php",
+          type: "post",
+          data: serijalizacija,
+     });
+
+     request.done(function (response, textStatus, jqXHR) {
+          if (response == "dodato") {
+               alert("Polaganje je uspesno dodato");
+               console.log("Uspesno dodato polaganje");
+               location.reload(true);
+          } else {
+               console.log("Polaganje nije dodato " + response);
+          }
+          console.log(response);
+     });
+
+     request.fail(function (jqXHR, textStatus, errorThrown) {
+          console.error("Sledeca greska se desila: " + textStatus, errorThrown);
      });
 });
